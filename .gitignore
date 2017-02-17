@@ -1,0 +1,20 @@
+# Maven #
+target/
+
+# IDEA #
+.idea/
+*.iml
+
+# Eclipse #
+.settings/
+.classpath
+.project
+.mvn/
+
+# jrebel #
+src/main/resources/rebel.xml
+
+# database #
+src/main/resources/application.yml
+
+rebel.xml
