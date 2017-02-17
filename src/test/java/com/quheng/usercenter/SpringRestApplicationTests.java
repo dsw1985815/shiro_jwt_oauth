@@ -13,6 +13,7 @@ public class SpringRestApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("启动开始");
 	}
 
 }
