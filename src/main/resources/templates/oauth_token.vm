@@ -28,9 +28,10 @@
     <p class="help-block">
         以上是请求令牌得到的结果，使用此令牌访问资源地址<br>
         <input id="method" value="GET" type="text"/><br>
-        <input type="text" value="/user/getuser?id=$!{userid}" id="resource"><br>
-        <input type="button" value="提交" onclick="getresource()">
+        <input type="text" value="/user/detail?id=$!{userid}" id="resource"><br>
+        <input id="resource_btn" type="button" value="提交">
     </p>
 </div>
+<script src="/static/token.js"></script>
 </body>
 </html>

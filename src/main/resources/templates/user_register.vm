@@ -1,0 +1,31 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<h2>Register</h2>
+<hr>
+<div>
+    <ul class="list-group">
+        <form id="registerform">
+            用户名:<input name="username" type="text" value="$!{loginEntity.username}"><br>
+            用户密码:<input name="password" type="password" value="$!{loginEntity.password}"><br>
+            电话:<input name="phone" type="text" value=""><br>
+            邮箱:<input name="email" type="text" value=""><br>
+            <input name="clientId" type="hidden" value="$!{clientId}"><br>
+        </form>
+        <input id="adduser_btn" type="button" value="新建用户" ><br>
+        <input id="login_btn" type="button" value="直接登录" ">
+    </ul>
+</div>
+<br/>
+<div id="loginpage"></div>
+<div id="tokendetail"></div>
+<div id="userdetail"></div>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/static/register.js"></script>
+</body>
+</html>

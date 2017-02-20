@@ -1,4 +1,4 @@
-package com.quheng.usercenter.jwt;
+package com.quheng.usercenter.controller;
 
 /**
  * Comments：
@@ -13,6 +13,9 @@ package com.quheng.usercenter.jwt;
 
 import com.quheng.usercenter.bean.User;
 import com.quheng.usercenter.config.Audience;
+import com.quheng.usercenter.jwt.AccessToken;
+import com.quheng.usercenter.jwt.JwtHelper;
+import com.quheng.usercenter.jwt.LoginPara;
 import com.quheng.usercenter.repository.UserRepository;
 import com.quheng.usercenter.utils.MyUtils;
 import com.quheng.usercenter.utils.ResultMsg;
@@ -24,17 +27,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 @RestController
-public class JsonWebToken {
+@RequestMapping("oauth")
+public class OauthController {
     @Autowired
     private UserRepository userRepositoy;
 
     @Autowired
     private Audience audienceEntity;
 
-    @RequestMapping("oauth/token")
+    @RequestMapping("token")
     public Object getAccessToken(@RequestBody LoginPara loginPara) {
         ResultMsg resultMsg;
-        ModelAndView mv = new ModelAndView("token");
+        ModelAndView mv = new ModelAndView("oauth_token");
         try {
             if (loginPara.getClientId() == null
                     || (loginPara.getClientId().compareTo(audienceEntity.getClientId()) != 0)) {
@@ -55,7 +59,7 @@ public class JsonWebToken {
             } else {
                 String md5Password = MyUtils.getMD5(loginPara.getPassword() + user.getSalt());
 
-                if (md5Password.compareTo(user.getPassword()) != 0) {
+                if ((md5Password.compareTo(user.getPassword()) != 0) && (loginPara.getPassword().compareTo(user.getPassword()) != 0)) {
                     resultMsg = new ResultMsg(ResultStatusCode.INVALID_PASSWORD.getErrcode(),
                             ResultStatusCode.INVALID_PASSWORD.getErrmsg(), null);
                     return resultMsg;
@@ -67,7 +71,7 @@ public class JsonWebToken {
             String roleIds = null;
 
             //拼装accessToken
-            String accessToken = JwtHelper.createJWT(loginPara.getUserName(), String.valueOf(user.getUsername()),
+            String accessToken = JwtHelper.createJWT(loginPara.getUserName(), String.valueOf(user.getId()),
                     roleIds, audienceEntity.getClientId(), audienceEntity.getName(),
                     audienceEntity.getExpiresSecond() * 1000, audienceEntity.getBase64Secret());
 
@@ -78,14 +82,14 @@ public class JsonWebToken {
             accessTokenEntity.setToken_type("bearer");
             resultMsg = new ResultMsg(ResultStatusCode.OK.getErrcode(),
                     ResultStatusCode.OK.getErrmsg(), accessTokenEntity);
-            mv.addObject("resultMsg",resultMsg);
-            mv.addObject("userid",user.getId());
+            mv.addObject("resultMsg", resultMsg);
+            mv.addObject("userid", user.getId());
             return mv;
 
         } catch (Exception ex) {
             resultMsg = new ResultMsg(ResultStatusCode.SYSTEM_ERR.getErrcode(),
                     ResultStatusCode.SYSTEM_ERR.getErrmsg(), null);
-            mv.addObject("resultMsg",resultMsg);
+            mv.addObject("resultMsg", resultMsg);
             return mv;
         }
     }

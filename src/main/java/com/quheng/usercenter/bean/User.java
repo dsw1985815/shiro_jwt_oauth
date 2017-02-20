@@ -25,13 +25,14 @@ public class User {
 
     private String username;
 
-    private Boolean delete;
+    private Boolean disabled;
 
     private String phone;
 
     private String email;
 
     private Date updateTime;
+
 
     //省略其它内容
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
@@ -104,12 +105,12 @@ public class User {
         this.username = username == null ? null : username.trim();
     }
 
-    public Boolean getDelete() {
-        return delete;
+    public Boolean getDisabled() {
+        return disabled;
     }
 
-    public void setDelete(Boolean delete) {
-        this.delete = delete;
+    public void setDisabled(Boolean disabled) {
+        this.disabled = disabled;
     }
 
     public String getPhone() {

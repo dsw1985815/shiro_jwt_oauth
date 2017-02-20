@@ -9,18 +9,15 @@
 <hr>
 <div>
     <ul class="list-group">
-        Username1:<input name="userName" type="text" value="text"><br>
-        Password:<input name="password" type="text" value="test"><br>
-        clientId:<input name="clientId" type="text" value="098f6bcd4621d373cade4e832627b4f6"><br>
-        <input id="loginPara" type="hidden" value='{"clientId":"098f6bcd4621d373cade4e832627b4f6","userName":"test","password":"test"}'><br>
-        <input type="button" value="提交" onclick="gettoken()">
+        <form id="loginform">
+        用户名:<input name="userName" type="text" value="$!{userEntity.username}"><br>
+        密码:<input name="password" type="password" value="$!{userEntity.password}"><br>
+        <input name="clientId" type="hidden" value="$!{clientId}"><br>
+        <input id="token_btn" type="button" value="登录">
+        </form>
     </ul>
 </div>
 <br/>
-<div id="tokendetail"></div>
-<div id="userdetail"></div>
-<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="/static/index.js"></script>
+<script src="/static/login.js"></script>
 </body>
 </html>
