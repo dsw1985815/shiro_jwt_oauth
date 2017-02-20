@@ -1,4 +1,4 @@
-package com.quheng.usercenter.jwt;
+package com.quheng.usercenter.config;
 
 /**
  * Comments：

@@ -1,0 +1,26 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+<hr>
+<div>
+    <ul class="list-group">
+        Username1:<input name="userName" type="text" value="text"><br>
+        Password:<input name="password" type="text" value="test"><br>
+        clientId:<input name="clientId" type="text" value="098f6bcd4621d373cade4e832627b4f6"><br>
+        <input id="loginPara" type="hidden" value='{"clientId":"098f6bcd4621d373cade4e832627b4f6","userName":"test","password":"test"}'><br>
+        <input type="button" value="提交" onclick="gettoken()">
+    </ul>
+</div>
+<br/>
+<div id="tokendetail"></div>
+<div id="userdetail"></div>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/static/index.js"></script>
+</body>
+</html>

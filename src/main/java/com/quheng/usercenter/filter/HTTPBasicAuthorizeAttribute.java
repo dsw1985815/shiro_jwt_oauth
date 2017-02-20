@@ -1,27 +1,24 @@
 package com.quheng.usercenter.filter;
 
-/**
- * Comments：
- * Author：dongshuangwei
- * Create Date：2017/2/16
- * Modified By：
- * Modified Date：
- * Why & What is modified：
- * Version：v1.0
- */
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.quheng.usercenter.utils.ResultMsg;
 import com.quheng.usercenter.utils.ResultStatusCode;
 import sun.misc.BASE64Decoder;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 @SuppressWarnings("restriction")
-public class HTTPBasicAuthorizeAttribute implements Filter {
+public class HTTPBasicAuthorizeAttribute implements Filter{
 
     private static String Name = "test";
     private static String Password = "test";
@@ -38,7 +35,8 @@ public class HTTPBasicAuthorizeAttribute implements Filter {
         // TODO Auto-generated method stub
 
         ResultStatusCode resultStatusCode = checkHTTPBasicAuthorize(request);
-        if (resultStatusCode != ResultStatusCode.OK) {
+        if (resultStatusCode != ResultStatusCode.OK)
+        {
             HttpServletResponse httpResponse = (HttpServletResponse) response;
             httpResponse.setCharacterEncoding("UTF-8");
             httpResponse.setContentType("application/json; charset=utf-8");
@@ -49,7 +47,9 @@ public class HTTPBasicAuthorizeAttribute implements Filter {
             ResultMsg resultMsg = new ResultMsg(ResultStatusCode.PERMISSION_DENIED.getErrcode(), ResultStatusCode.PERMISSION_DENIED.getErrmsg(), null);
             httpResponse.getWriter().write(mapper.writeValueAsString(resultMsg));
             return;
-        } else {
+        }
+        else
+        {
             chain.doFilter(request, response);
         }
     }
@@ -60,21 +60,28 @@ public class HTTPBasicAuthorizeAttribute implements Filter {
 
     }
 
-    private ResultStatusCode checkHTTPBasicAuthorize(ServletRequest request) {
-        try {
-            HttpServletRequest httpRequest = (HttpServletRequest) request;
+    private ResultStatusCode checkHTTPBasicAuthorize(ServletRequest request)
+    {
+        try
+        {
+            HttpServletRequest httpRequest = (HttpServletRequest)request;
             String auth = httpRequest.getHeader("Authorization");
-            if ((auth != null) && (auth.length() > 6)) {
+            if ((auth != null) && (auth.length() > 6))
+            {
                 String HeadStr = auth.substring(0, 5).toLowerCase();
-                if (HeadStr.compareTo("basic") == 0) {
+                if (HeadStr.compareTo("basic") == 0)
+                {
                     auth = auth.substring(6, auth.length());
                     String decodedAuth = getFromBASE64(auth);
-                    if (decodedAuth != null) {
+                    if (decodedAuth != null)
+                    {
                         String[] UserArray = decodedAuth.split(":");
 
-                        if (UserArray != null && UserArray.length == 2) {
+                        if (UserArray != null && UserArray.length == 2)
+                        {
                             if (UserArray[0].compareTo(Name) == 0
-                                    && UserArray[1].compareTo(Password) == 0) {
+                                    && UserArray[1].compareTo(Password) == 0)
+                            {
                                 return ResultStatusCode.OK;
                             }
                         }
@@ -82,7 +89,9 @@ public class HTTPBasicAuthorizeAttribute implements Filter {
                 }
             }
             return ResultStatusCode.PERMISSION_DENIED;
-        } catch (Exception ex) {
+        }
+        catch(Exception ex)
+        {
             return ResultStatusCode.PERMISSION_DENIED;
         }
 

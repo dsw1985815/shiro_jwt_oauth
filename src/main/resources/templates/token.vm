@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Client Details</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <style>
+        .list-group li:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Token Details</h2>
+<hr>
+
+<div>
+    <ul class="list-group">
+        消息代码：<input readonly name="userName" type="text" value="$!{resultMsg.errcode}"/><br>
+        错误信息：<input readonly name="userName" type="text" value="$!{resultMsg.errmsg}"/><br>
+        令牌类型：<input readonly id="type" name="userName" type="text" value="$!{resultMsg.p2pdata.token_type}"/><br>
+        超时时间：<input readonly name="userName" type="text" value="$!{resultMsg.p2pdata.expires_in}"/><br>
+        访问令牌：
+        <textarea rows="3" cols="20">
+            $!{resultMsg.p2pdata.access_token}
+        </textarea><br>
+        <input id="token" value="$!{resultMsg.p2pdata.access_token}" type="hidden"/>
+    </ul>
+    <p class="help-block">
+        以上是请求令牌得到的结果，使用此令牌访问资源地址<br>
+        <input id="method" value="GET" type="text"/><br>
+        <input type="text" value="/user/getuser?id=$!{userid}" id="resource"><br>
+        <input type="button" value="提交" onclick="getresource()">
+    </p>
+</div>
+</body>
+</html>

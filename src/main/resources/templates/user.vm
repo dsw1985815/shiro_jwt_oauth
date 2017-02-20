@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Client Details</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <style>
+        .list-group li:hover {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>User Details</h2>
+<hr>
+<div>
+    <ul class="list-group">
+        用户名：<input readonly name="userName" type="text" value="$!{resultMsg.p2pdata.username}"/><br>
+        密码：<input readonly name="userName" type="text" value="$!{resultMsg.p2pdata.password}"/><br>
+        电话：<input readonly id="type" name="userName" type="text" value="$!{resultMsg.p2pdata.phone}"/><br>
+        邮箱：<input readonly name="userName" type="text" value="$!{resultMsg.p2pdata.email}"/><br>
+        创建时间：<input readonly name="userName" type="text" value="$!{resultMsg.p2pdata.createTime}"/><br>
+        更新时间：<input readonly name="userName" type="text" value="$!{resultMsg.p2pdata.updateTime}"/><br>
+    </ul>
+</div>
+</body>
+</html>

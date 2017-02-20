@@ -12,6 +12,7 @@ package com.quheng.usercenter.jwt;
 
 
 import com.quheng.usercenter.bean.User;
+import com.quheng.usercenter.config.Audience;
 import com.quheng.usercenter.repository.UserRepository;
 import com.quheng.usercenter.utils.MyUtils;
 import com.quheng.usercenter.utils.ResultMsg;
@@ -20,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class JsonWebToken {
@@ -32,6 +34,7 @@ public class JsonWebToken {
     @RequestMapping("oauth/token")
     public Object getAccessToken(@RequestBody LoginPara loginPara) {
         ResultMsg resultMsg;
+        ModelAndView mv = new ModelAndView("token");
         try {
             if (loginPara.getClientId() == null
                     || (loginPara.getClientId().compareTo(audienceEntity.getClientId()) != 0)) {
@@ -75,12 +78,15 @@ public class JsonWebToken {
             accessTokenEntity.setToken_type("bearer");
             resultMsg = new ResultMsg(ResultStatusCode.OK.getErrcode(),
                     ResultStatusCode.OK.getErrmsg(), accessTokenEntity);
-            return resultMsg;
+            mv.addObject("resultMsg",resultMsg);
+            mv.addObject("userid",user.getId());
+            return mv;
 
         } catch (Exception ex) {
             resultMsg = new ResultMsg(ResultStatusCode.SYSTEM_ERR.getErrcode(),
                     ResultStatusCode.SYSTEM_ERR.getErrmsg(), null);
-            return resultMsg;
+            mv.addObject("resultMsg",resultMsg);
+            return mv;
         }
     }
 }

@@ -1,10 +1,10 @@
 package com.quheng.usercenter.bean;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,19 +18,26 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name="role")
+@Table(name = "role")
 public class Role {
 
-    private Set<User> users = new HashSet<User>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-    @JoinTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "userId")}, inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "roleId")})
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JsonIgnore
-    public Set<User> getUsers() {
+    public int getId() {
+        return id;
+    }
+
+    //省略其它内容
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "roles", fetch = FetchType.LAZY)
+    private List<User> users = new ArrayList<User>();        //用户集合
+
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

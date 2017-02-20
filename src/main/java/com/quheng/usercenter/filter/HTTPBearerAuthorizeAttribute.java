@@ -10,7 +10,7 @@
 package com.quheng.usercenter.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.quheng.usercenter.jwt.Audience;
+import com.quheng.usercenter.config.Audience;
 import com.quheng.usercenter.jwt.JwtHelper;
 import com.quheng.usercenter.utils.ResultMsg;
 import com.quheng.usercenter.utils.ResultStatusCode;
