@@ -26,7 +26,6 @@ $(function(){
             contentType: "application/json",
             data: JSON.stringify($('#registerform').serializeObject()),
             success: function (data) {
-                alert(data);
                 $("#loginpage").html(data);
             }, error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log("错误状态：" + XMLHttpRequest.status + "," + XMLHttpRequest.readyState + "," + textStatus);
@@ -44,6 +43,7 @@ $(function(){
             contentType: "application/json",
             data: JSON.stringify($('#registerform').serializeObject()),
             success: function (data) {
+                alert(data);
                 $("#loginpage").html(data);
             }, error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log("错误状态：" + XMLHttpRequest.status + "," + XMLHttpRequest.readyState + "," + textStatus);

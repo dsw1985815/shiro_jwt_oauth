@@ -36,7 +36,7 @@ public class UserController {
     @RequestMapping("login")
     public Object login(@RequestBody LoginEntity loginEntity) {
         ModelAndView mv = new ModelAndView("user_login");
-        mv.addObject("loginEntity", loginEntity);
+        mv.addObject("userEntity", loginEntity);
         mv.addObject("clientId", loginEntity.getClientId());
         return mv;
     }

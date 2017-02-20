@@ -44,6 +44,7 @@ public class SpringRestApplication {
 		List<String> urlPatterns = new ArrayList<String>();
 		urlPatterns.add("/user/getusers");
 		urlPatterns.add("/user/getuser");
+		urlPatterns.add("/user/detail");
 		registrationBean.setUrlPatterns(urlPatterns);
 		return registrationBean;
 	}
