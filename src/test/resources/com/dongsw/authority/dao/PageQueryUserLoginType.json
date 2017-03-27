@@ -1,0 +1,16 @@
+{
+  "list" : null,
+  "paras" : {
+    "platType" : 287376440,
+    "loginType" : 83176748,
+    "loginPlat" : 307488725,
+    "userRole" : 698493965
+  },
+  "orderBy" : null,
+  "pageNumber" : 1,
+  "pageSize" : 20,
+  "totalPage" : 0,
+  "totalRow" : -1,
+  "lastPage" : false,
+  "firstPage" : true
+}

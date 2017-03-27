@@ -1,0 +1,28 @@
+{
+  "list" : null,
+  "paras" : {
+    "id" : 403647050,
+    "resourcePath" : "wVIWpuwd8miCYJoEQGM",
+    "tokenTypeId" : 106692905,
+    "allowResetHeader" : 0,
+    "defaultPermission" : "anon",
+    "tokenType" : {
+      "id" : 798516275,
+      "checkTimes" : 961655946,
+      "expire" : 29982008,
+      "describe" : "eKku5IQ4HqSPwc94B",
+      "name" : "AtKRUmJtj",
+      "required" : 676045131
+    },
+    "permStr" : "ka",
+    "configerMap" : null,
+    "tails" : { }
+  },
+  "orderBy" : null,
+  "pageNumber" : 1,
+  "pageSize" : 20,
+  "totalPage" : 0,
+  "totalRow" : -1,
+  "lastPage" : false,
+  "firstPage" : true
+}

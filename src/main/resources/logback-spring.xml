@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+<!-- 	<jmxConfigurator /> -->
+    <!-- <springProfile name="dev,online"> -->
+    	<appender name="rollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+		    <file>/data/user/dongsw-shiro-redis.log</file>
+		    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+		        <fileNamePattern>data/user/dongsw-shiro-redis.log.%d{yyyy-MM-dd}</fileNamePattern>
+		        <maxHistory>60</maxHistory>  
+		    </rollingPolicy>  
+		    <encoder><!-- 必须指定，否则不会往文件输出内容 -->  
+		        <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{3} - %msg%n</pattern>  
+		    </encoder>  
+		    <append>false</append>  
+		    <prudent>false</prudent>  
+		</appender>
+		<appender name="perf-rollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+		    <file>data/user/dongsw-shiro-redis-pref.log</file>
+		    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+		        <fileNamePattern>data/user/dongsw-shiro-redis-pref.log.%d{yyyy-MM-dd}</fileNamePattern>
+		        <maxHistory>60</maxHistory>  
+		    </rollingPolicy>  
+		    <encoder><!-- 必须指定，否则不会往文件输出内容 -->  
+		        <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{3} - %msg%n</pattern>  
+		    </encoder>  
+		    <append>false</append>  
+		    <prudent>false</prudent>  
+		</appender>
+		<appender name="error-rollingAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">  
+		    <file>data/user/dongsw-shiro-redis-error.log</file>
+		    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">  
+		        <fileNamePattern>data/user/dongsw-shiro-redis-error.log.%d{yyyy-MM-dd}</fileNamePattern>
+		        <maxHistory>60</maxHistory>  
+		    </rollingPolicy>  
+		    <encoder><!-- 必须指定，否则不会往文件输出内容 -->  
+		        <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{3} - %msg%n</pattern>  
+		    </encoder>  
+		    <append>false</append>  
+		    <prudent>false</prudent>  
+		</appender>
+		<logger name="performance" level="INFO">
+		    <appender-ref ref="perf-rollingAppender" />  
+		    <appender-ref ref="rollingAppender" />  
+		</logger>
+		<logger name="error" level="INFO">
+		    <appender-ref ref="error-rollingAppender" />  
+		    <appender-ref ref="rollingAppender" />  
+		</logger>
+		<logger name="druid.sql.Statement" level="DEBUG">
+            <appender-ref ref="CONSOLE" />
+		</logger>
+		<logger name="com.com.dongsw.privilege.shiro.app.dao" level="DEBUG">
+		    <appender-ref ref="rollingAppender" />  
+		</logger>
+		<root level="INFO"> 
+            <appender-ref ref="CONSOLE" />
+		</root>
+    <!-- </springProfile> -->
+</configuration>

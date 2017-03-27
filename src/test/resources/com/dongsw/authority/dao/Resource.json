@@ -1,0 +1,18 @@
+{
+  "id" : 453665737,
+  "resourcePath" : "CC8A871awBA50b5ShzR",
+  "tokenTypeId" : 847005256,
+  "allowResetHeader" : 0,
+  "defaultPermission" : "anon",
+  "tokenType" : {
+    "id" : 717247737,
+    "checkTimes" : 738512738,
+    "expire" : 503623637,
+    "describe" : "wCUjjzFY8l",
+    "name" : "nlcK8UXxKDCFTyz",
+    "required" : 120589990
+  },
+  "permStr" : "MHs50UhAwIK8k",
+  "configerMap" : null,
+  "tails" : { }
+}

@@ -1,0 +1,22 @@
+{
+  "list" : null,
+  "paras" : {
+    "id" : 455667001,
+    "password" : "kGsIQpx",
+    "phone" : "hS",
+    "username" : "xp8V5eepvMu8y9Vxhl",
+    "salt" : "Z6pSp1Iz",
+    "userCode" : "r",
+    "userPlat" : 88116868,
+    "platType" : "yNfBliSSSFsvN52W",
+    "roles" : null,
+    "online" : false
+  },
+  "orderBy" : null,
+  "pageNumber" : 1,
+  "pageSize" : 20,
+  "totalPage" : 0,
+  "totalRow" : -1,
+  "lastPage" : false,
+  "firstPage" : true
+}

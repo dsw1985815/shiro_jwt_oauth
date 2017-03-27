@@ -1,0 +1,18 @@
+{
+  "id" : 262164696,
+  "resourcePath" : "D9hfze",
+  "tokenTypeId" : 463851457,
+  "allowResetHeader" : 0,
+  "defaultPermission" : "anon",
+  "tokenType" : {
+    "id" : 606802181,
+    "checkTimes" : 102346046,
+    "expire" : 114589733,
+    "describe" : "VAnc6rZ2FV5jlE6Pc",
+    "name" : "ursVDWG",
+    "required" : 149333346
+  },
+  "permStr" : "LZs2Uyn7Q",
+  "configerMap" : null,
+  "tails" : { }
+}
